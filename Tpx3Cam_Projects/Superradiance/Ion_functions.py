@@ -73,10 +73,10 @@ class Ion:
             return
         fig, (ax0, ax1) = plt.subplots(ncols=2, figsize=(6, 2.5))
 
-        h = ax0.hist2d(self.data['x'], self.data['y'], bins=int(2*self.r0), range=[(self.x-self.r0, self.x+self.r0), (self.y-self.r0, self.y+self.r0)])
+        h = ax0.hist2d(self.data['xc'], self.data['yc'], bins=int(2*self.r0), range=[(self.x-self.r0, self.x+self.r0), (self.y-self.r0, self.y+self.r0)])
         fig.colorbar(h[3], ax = ax0)
 
-        h = ax1.hist2d(self.data['x'], self.data['y'], bins=(2*self.r0), range=[(self.x-self.r0, self.x+self.r0), (self.y-self.r0, self.y+self.r0)], norm=mpl.colors.LogNorm())
+        h = ax1.hist2d(self.data['xc'], self.data['yc'], bins=(2*self.r0), range=[(self.x-self.r0, self.x+self.r0), (self.y-self.r0, self.y+self.r0)], norm=mpl.colors.LogNorm())
         fig.colorbar(h[3], ax = ax1)
         fig.tight_layout()
         plt.show()
@@ -230,7 +230,7 @@ class Ion:
         #Print statements that tell you about the threshold and the fit parameters etc. 
         prob = 1 - stats.expon.cdf(int_to, loc=loc, scale= 1 / rate)
         z = (stats.norm.ppf(1-(prob)))
-        print(f'Ion {self.n} threshold: {int_to:.2e}(s)' )
+        #print(f'Ion {self.n} threshold: {int_to:.2e}(s)' )
         #print(f'Fit Parameters: [rate (lambda) = {popt[0]:.3e}] || [multiplier = {popt[1]:.3e}] \n')
         
         #Plot everything on a non-log base y-scale. 
@@ -284,7 +284,7 @@ class Ion:
             self.dark = self.data.query(f'dt > {self.threshold}')
 
             
-        print(f'Bright events (#/%): {len(self.bright)} / {len(self.bright)/len(self.data)*100:.2f}% \n')
+        #print(f'Bright events (#/%): {len(self.bright)} / {len(self.bright)/len(self.data)*100:.2f}% \n')
         b_or_d = []
         for i in self.data['index']:
             if self.data.at[i, 'dt'] <= self.threshold:
@@ -388,7 +388,7 @@ class Ion:
         #  averages each 'point' and plots what can be referred to as an 'average transition' ###
         
         
-    def setup(self, sigma=2, uncertainty_control = True, single_photon_control = True):
+    def setup(self, sigma=2, uncertainty_control = True, single_photon_control = False):
         if type(self.color) == int:
             print(f'Ion {self.n} does not exist.')
             return
@@ -597,12 +597,12 @@ class Ion:
 
         # Plot the histogram of Bright state duration times along with its exponential fit. 
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize = (12, 3))
-        bin_heights, bin_borders, _ = ax1.hist(Bduration, bins= 100, alpha = .7, label='\'dt\' pdf', range = [0,.2], density = True)
+        bin_heights, bin_borders, _ = ax1.hist(Bduration, bins= 50, alpha = .7, label='\'dt\' pdf', range = [0,.2], density = True)
         bin_centers = bin_borders[:-1] + np.diff(bin_borders) / 2
-        popt, pcov = scipy.optimize.curve_fit(Superradiance, bin_centers, bin_heights, p0 = [15, 1.5])
+        #popt, pcov = scipy.optimize.curve_fit(Superradiance, bin_centers, bin_heights, p0 = [15, 1.5])
         #popt, _ = curve_fit(expon, bin_centers, bin_heights, p0=[1/.02, 20])
-        print(f'Decay parameter: {1/popt[0]:.4f} (s)')
-        x_interval_for_fit = np.linspace(bin_borders[0], bin_borders[-1], 10000)
+        #print(f'Decay parameter: {1/popt[0]:.4f} (s)')
+        #x_interval_for_fit = np.linspace(bin_borders[0], bin_borders[-1], 10000)
         #ax1.plot(x_interval_for_fit, expon(x_interval_for_fit, *popt), label='fit')
         #ax1.plot(x_interval_for_fit, Superradiance(x_interval_for_fit, *popt), label='fit')
         ax1.set_xlabel('Time (s)')
@@ -614,7 +614,7 @@ class Ion:
             ax1.set_ylabel('Probability Density (log base)')
             
         # Plot the histogram of Dark state duration times along with its exponential fit. 
-        bin_heights, bin_borders, _ = ax2.hist(Dduration, bins= 100, alpha = .7, label='\'dt\' pdf', range = [0,.2], density = True)
+        bin_heights, bin_borders, _ = ax2.hist(Dduration, bins= 50, alpha = .7, label='\'dt\' pdf', range = [0,.2], density = True)
         bin_centers = bin_borders[:-1] + np.diff(bin_borders) / 2
         bin_centers = np.array(bin_centers)
         bin_heights = np.array(bin_heights)

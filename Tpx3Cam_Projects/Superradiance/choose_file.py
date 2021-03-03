@@ -994,11 +994,21 @@ def Six_squeezed(afterpulse_control = True):
     ion_7 = Ion(7, 0, 0, 0, 0, 0)
     ion_8 = Ion(8, 0, 0, 0, 0, 0)
     
+    sigma = 2
+    uncertainty = True
+    single_photon = False
+    #ion_1.setup(sigma, uncertainty, single_photon)
+    #ion_2.setup(sigma, uncertainty, single_photon)
+    #ion_3.setup(sigma, uncertainty, single_photon)
+    #ion_4.setup(sigma, uncertainty, single_photon)
+    #ion_5.setup(sigma, uncertainty, single_photon)
+    #ion_6.setup(sigma, uncertainty, single_photon)
+    
     
     fig, (ax1, ax2) = plt.subplots(ncols = 2, figsize = (10, 4))
-    ax1.hist2d(old_data_table['x'], old_data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (max(data_table['x']) - min(data_table['x']) +5 , max(data_table['y']) - min(data_table['y']) +5))
+    ax1.hist2d(old_data_table['x'], old_data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (int(max(data_table['x']) - min(data_table['x']) +5) , int(max(data_table['y']) - min(data_table['y']) +5)))
     
-    ax2.hist2d(data_table['x'], data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (max(data_table['x']) - min(data_table['x']) +5 , max(data_table['y']) - min(data_table['y']) +5))
+    ax2.hist2d(data_table['x'], data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (int(max(data_table['x']) - min(data_table['x']) +5) , int(max(data_table['y']) - min(data_table['y']) +5)))
     
     #This last part prints the ROI for each ion so that you can verify the code is correct.   
 
@@ -1139,10 +1149,18 @@ def Four(afterpulse_control = True):
     ion_7 = Ion(7, 0, 0, 0, 0, 0)
     ion_8 = Ion(8, 0, 0, 0, 0, 0)
     
-    fig, (ax1, ax2) = plt.subplots(ncols = 2, figsize = (10, 4))
-    ax1.hist2d(old_data_table['x'], old_data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (max(data_table['x']) - min(data_table['x']) +5 , max(data_table['y']) - min(data_table['y']) +5))
+    sigma = 2
+    uncertainty = True
+    single_photon = False
+    #ion_1.setup(sigma, uncertainty, single_photon)
+    #ion_2.setup(sigma, uncertainty, single_photon)
+    #ion_3.setup(sigma, uncertainty, single_photon)
+    #ion_4.setup(sigma, uncertainty, single_photon)
     
-    ax2.hist2d(data_table['x'], data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (max(data_table['x']) - min(data_table['x']) +5 , max(data_table['y']) - min(data_table['y']) +5))
+    fig, (ax1, ax2) = plt.subplots(ncols = 2, figsize = (10, 4))
+    ax1.hist2d(old_data_table['x'], old_data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (int(max(data_table['x']) - min(data_table['x']) +5) , int(max(data_table['y']) - min(data_table['y']) +5)))
+    
+    ax2.hist2d(data_table['x'], data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (int(max(data_table['x']) - min(data_table['x']) +5) , int(max(data_table['y']) - min(data_table['y']) +5)))
     
     
     #This last part prints the ROI for each ion so that you can verify the code is correct.   
@@ -1252,10 +1270,17 @@ def Three(afterpulse_control = True):
     ion_7 = Ion(7, 0, 0, 0, 0, 0)
     ion_8 = Ion(8, 0, 0, 0, 0, 0)
     
-    fig, (ax1, ax2) = plt.subplots(ncols = 2, figsize = (10, 4))
-    ax1.hist2d(old_data_table['x'], old_data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (max(data_table['x']) - min(data_table['x']) +5 , max(data_table['y']) - min(data_table['y']) +5))
+    sigma = 2
+    uncertainty = True
+    single_photon = False
+    #ion_1.setup(sigma, uncertainty, single_photon)
+    #ion_2.setup(sigma, uncertainty, single_photon)
+    #ion_3.setup(sigma, uncertainty, single_photon)
     
-    ax2.hist2d(data_table['x'], data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (max(data_table['x']) - min(data_table['x']) +5 , max(data_table['y']) - min(data_table['y']) +5))
+    fig, (ax1, ax2) = plt.subplots(ncols = 2, figsize = (10, 4))
+    ax1.hist2d(old_data_table['x'], old_data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (int(max(data_table['x']) - min(data_table['x']) +5) , int(max(data_table['y']) - min(data_table['y']) +5)))
+    
+    ax2.hist2d(data_table['x'], data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (int(max(data_table['x']) - min(data_table['x']) +5) , int(max(data_table['y']) - min(data_table['y']) +5)))
     
     
     
@@ -1346,10 +1371,16 @@ def Two(afterpulse_control = True):
     ion_7 = Ion(7, 0, 0, 0, 0, 0)
     ion_8 = Ion(8, 0, 0, 0, 0, 0)
     
-    fig, (ax1, ax2) = plt.subplots(ncols = 2, figsize = (10, 4))
-    ax1.hist2d(old_data_table['x'], old_data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (max(data_table['x']) - min(data_table['x']) +5 , max(data_table['y']) - min(data_table['y']) +5))
+    sigma = 2
+    uncertainty = True
+    single_photon = False
+    #ion_1.setup(sigma, uncertainty, single_photon)
+    #ion_2.setup(sigma, uncertainty, single_photon)
     
-    ax2.hist2d(data_table['x'], data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (max(data_table['x']) - min(data_table['x']) +5 , max(data_table['y']) - min(data_table['y']) +5))
+    fig, (ax1, ax2) = plt.subplots(ncols = 2, figsize = (10, 4))
+    ax1.hist2d(old_data_table['x'], old_data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (int(max(data_table['x']) - min(data_table['x']) +5) , int(max(data_table['y']) - min(data_table['y']) +5)))
+    
+    ax2.hist2d(data_table['x'], data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (int(max(data_table['x']) - min(data_table['x']) +5) , int(max(data_table['y']) - min(data_table['y']) +5)))
     
 
 #__________________________________________________________________________________________________________
@@ -1419,9 +1450,14 @@ def One():
     ion_7 = Ion(7, 0, 0, 0, 0, 0)
     ion_8 = Ion(8, 0, 0, 0, 0, 0)
     
-    fig, (ax1, ax2) = plt.subplots(ncols = 2, figsize = (10, 4))
-    ax1.hist2d(old_data_table['x'], old_data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (max(data_table['x']) - min(data_table['x']) +5 , max(data_table['y']) - min(data_table['y']) +5))
+    sigma = 2
+    uncertainty = True
+    single_photon = False
+    #ion_1.setup(sigma, uncertainty, single_photon)
     
-    ax2.hist2d(data_table['x'], data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (max(data_table['x']) - min(data_table['x']) +5 , max(data_table['y']) - min(data_table['y']) +5))
+    fig, (ax1, ax2) = plt.subplots(ncols = 2, figsize = (10, 4))
+    ax1.hist2d(old_data_table['x'], old_data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (int(max(data_table['x']) - min(data_table['x']) +5) , int(max(data_table['y']) - min(data_table['y']) +5)))
+    
+    ax2.hist2d(data_table['x'], data_table['y'], range = [(min(data_table['x'])-2, max(data_table['x'])+2), (min(data_table['y'])-2, max(data_table['y'])+2)], bins = (int(max(data_table['x']) - min(data_table['x']) +5) , int(max(data_table['y']) - min(data_table['y']) +5)))
     
     

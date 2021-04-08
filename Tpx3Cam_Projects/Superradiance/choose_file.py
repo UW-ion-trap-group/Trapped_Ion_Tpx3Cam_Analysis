@@ -4,6 +4,27 @@ import matplotlib.pyplot as plt
 import Ion_functions
 from Ion_functions import Ion
 
+def New_File(afterpulse_control = True):
+    global x1; global x2; global x3; global x4; global x5; global x6;
+    global y1; global y2; global y3; global y4; global y5; global y6;
+    # Define the location of each of the ions in the data set. 
+    # This must be done separately by making 2D histograms and finding centers
+    x1 = 99; y1 = 117
+    x2 = 105; y2 = 117 
+    x3 = 111; y3 = 117
+    x4 = 116; y4 = 117 
+    x5 = 121; y5 = 117 
+    x6 = 127; y6 = 117 
+    
+    # "global" allows the "variable" to be called in another Notebook
+    # by saying choose_file.variable after this function is run
+    global filename
+    filename = 'Test_Folder/New_File_3'
+    
+    Six_squeezed(afterpulse_control) # Perform function (defined at bottom of this page) that corresponds to number of ions in chain
+
+
+
 
 def Jumps_Six_350V_1(afterpulse_control = True):
     global x1; global x2; global x3; global x4; global x5; global x6;

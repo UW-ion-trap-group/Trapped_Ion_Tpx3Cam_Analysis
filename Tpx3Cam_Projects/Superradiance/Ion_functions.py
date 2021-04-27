@@ -524,8 +524,8 @@ class Ion:
         counting = use['time']
         plt.scatter(counting, change)
         plt.title("Visual representation of ion states")
-        plt.xlabel("Event #")
-        plt.ylabel("Time since last event (s)")
+        plt.xlabel("Time (s)")
+        plt.ylabel("time between photons (s)")
         plt.ylim(-self.threshold,10*self.threshold)
 
         if linehere != []:
